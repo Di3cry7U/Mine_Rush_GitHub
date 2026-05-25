@@ -28,7 +28,6 @@ public class BlockScript : MonoBehaviour
     public void TakeDamage(float _damage)
     {
         health -= _damage;
-        print(health);
     }
 
     private void DropMinerals()

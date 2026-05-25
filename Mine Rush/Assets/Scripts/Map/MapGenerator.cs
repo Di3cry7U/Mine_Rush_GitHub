@@ -17,6 +17,10 @@ public class MapGenerator : MonoBehaviour
     public int chunkHeight = 10;
     public float blockSize = 1f;
 
+    private Vector2Int specialPosition;
+    private bool generateSpecial = false;
+    private bool forceSpecialNextChunk = false;
+
     public int chunksAhead = 2; 
     private int lowestChunkGenerated = 0;
 
@@ -25,6 +29,11 @@ public class MapGenerator : MonoBehaviour
 
     [Header("Blocks")]
     public List<BlockData> blocks;
+
+    [Header("Specials")]
+    public GameObject shopPrefab;
+    public GameObject minerPrefab; 
+    public GameObject minerPanel;
 
     private int currentChunkY = 0;
     private Dictionary<int, GameObject> spawnedChunks = new Dictionary<int, GameObject>();
@@ -50,6 +59,10 @@ public class MapGenerator : MonoBehaviour
             lowestChunkGenerated++;
         }
     }
+    public void ForceNextChunkSpecial()
+    {
+        forceSpecialNextChunk = true;
+    }
 
     void GenerateChunk(int chunkY)
     {
@@ -57,6 +70,21 @@ public class MapGenerator : MonoBehaviour
         chunkParent.transform.parent = transform;
 
         float startY = -chunkY * chunkHeight * blockSize;
+
+        generateSpecial = forceSpecialNextChunk;
+
+        if (generateSpecial)
+        {
+            forceSpecialNextChunk = false;
+        }
+
+        if (generateSpecial)
+        {
+            specialPosition = new Vector2Int(
+                Random.Range(2, chunkWidth - 2),
+                Random.Range(2, chunkHeight - 2)
+            );
+        }
 
         for (int y = 0; y < chunkHeight; y++)
         {
@@ -67,6 +95,17 @@ public class MapGenerator : MonoBehaviour
                     startY - (y * blockSize)
                 );
 
+                if (generateSpecial)
+                {
+                    int distX = Mathf.Abs(x - specialPosition.x);
+                    int distY = Mathf.Abs(y - specialPosition.y);
+
+                    if (distX <= 1 && distY <= 1)
+                    {
+                        continue;
+                    }
+                }
+
                 GameObject block = GetRandomBlock();
 
                 if (block != null)
@@ -74,6 +113,35 @@ public class MapGenerator : MonoBehaviour
                     Instantiate(block, position, Quaternion.identity, chunkParent.transform);
                 }
             }
+        }
+
+        // SPAWN DEL ESPECIAL (SOLO UNA VEZ)
+        if (generateSpecial)
+        {
+            Vector2 spawnPos = new Vector2(
+                specialPosition.x * blockSize,
+                startY - (specialPosition.y * blockSize)
+            );
+
+            GameObject prefabToSpawn;
+
+            if (Random.value < 0.5f)
+            {
+                prefabToSpawn = shopPrefab;
+            }
+            else
+            {
+                prefabToSpawn = minerPrefab;
+            }
+
+            GameObject spawnedObject = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity, chunkParent.transform);
+            MinerManager minerScript = spawnedObject.GetComponent<MinerManager>();
+
+            if (minerScript != null)
+            {
+                minerScript.MinerButton = minerPanel;
+            }
+
         }
 
         spawnedChunks.Add(chunkY, chunkParent);
@@ -118,3 +186,4 @@ public class MapGenerator : MonoBehaviour
         return null;
     }
 }
+

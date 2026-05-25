@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Accion Romper")]
     public float dmg = 1f;
-    public float cooldown = 0.5f;
+    public float cooldown = 0f;
     public float range = 1.2f;
     public LayerMask blockLayer;
 
@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (hit.collider != null)
         {
-            print(hit.collider.gameObject.name);
+            //print(hit.collider.gameObject.name);
             if (!hit.collider.CompareTag("Player"))
             {
                 var block = hit.collider.GetComponent<BlockScript>();
