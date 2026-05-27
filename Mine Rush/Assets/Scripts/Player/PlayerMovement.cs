@@ -9,13 +9,19 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Joystick joystick;
 
+    [HideInInspector]
+    public bool isMining;
+
     private float moveInput;
 
     [Header("Accion Romper")]
     public float dmg = 1f;
-    public float cooldown = 0f;
+    public float cooldown = .4f;
     public float range = 1.2f;
     public LayerMask blockLayer;
+
+    public UiManager uiManager;
+    public GameManager gameManager;
 
     private float nextTimeToDamage = 0f;
     private Vector2 lastDirection = Vector2.right; // dirección por defecto
@@ -35,7 +41,11 @@ public class PlayerMovement : MonoBehaviour
         Movement(speed);
         GetDirection();
 
-        if (Keyboard.current.spaceKey.isPressed)
+        //if (Keyboard.current.spaceKey.isPressed)
+        //{
+        //    TryBreak();
+        //}
+        if (isMining)
         {
             TryBreak();
         }
@@ -74,14 +84,19 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.DrawRay(transform.position, lastDirection * range, Color.red, 0.5f);
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection, range, blockLayer);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(
+            transform.position,
+            lastDirection,
+            range,
+            blockLayer
+        );
 
-        if (hit.collider != null)
+        foreach (RaycastHit2D hit in hits)
         {
-            //print(hit.collider.gameObject.name);
             if (!hit.collider.CompareTag("Player"))
             {
-                var block = hit.collider.GetComponent<BlockScript>();
+                BlockScript block = hit.collider.GetComponent<BlockScript>();
+
                 if (block != null)
                 {
                     block.TakeDamage(dmg);
@@ -108,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDestroy()
     {
-        SceneManager.LoadScene("GameScene");
+        gameManager.isInAMenu = true;
+        uiManager.defeatPanel.SetActive(true);
     }
 }

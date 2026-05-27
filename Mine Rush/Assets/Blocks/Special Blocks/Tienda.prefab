@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6681344904484483251}
   - component: {fileID: 820241985468536909}
   - component: {fileID: 142432027457139809}
+  - component: {fileID: -931651170522644156}
   m_Layer: 3
   m_Name: Tienda
   m_TagString: Untagged
@@ -102,7 +103,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.1842118, g: 0.6320754, b: 0.14012992, a: 1}
+  m_Color: {r: 0.12300205, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -157,3 +158,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &-931651170522644156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227203597123137186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f0cd6e465330e4491e815a41c210a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopManager
+  gameManager: {fileID: 0}
+  ShopButton: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  cameraMovement: {fileID: 0}

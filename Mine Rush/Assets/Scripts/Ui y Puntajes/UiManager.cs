@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
@@ -9,7 +10,22 @@ public class UiManager : MonoBehaviour
     public TextMeshProUGUI pointsTxt;
     public float pointsCount;
 
+    [Header("Pause Menu")]
+    public GameObject pauseCloseButton;
+    public GameObject pauseButton;
+
+    public GameManager manager;
+
+    [Header("Defeat Menu")]
+    public GameObject defeatPanel;
+    public GameObject defeatButton;
+
+
     private void Start()
+    {
+        mineralsTxt.text = "Minerales: " + mineralsCount;
+    }
+    private void Update()
     {
         mineralsTxt.text = "Minerales: " + mineralsCount;
     }
@@ -28,5 +44,24 @@ public class UiManager : MonoBehaviour
     public void ExitButton()
     {
         Application.Quit();
+    }
+
+    public void PauseButton()
+    {
+        pauseCloseButton.SetActive(true);
+        pauseButton.SetActive(false);
+        manager.isInAMenu = true;
+    }
+
+    public void CerrarMenuPausa()
+    {
+        pauseCloseButton.SetActive(false);
+        pauseButton.SetActive(true);
+        manager.isInAMenu = false;
+    }
+
+    public void DefeatMenu()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 }

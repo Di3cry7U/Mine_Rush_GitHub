@@ -35,6 +35,9 @@ public class MapGenerator : MonoBehaviour
     public GameObject minerPrefab; 
     public GameObject minerPanel;
 
+    private bool shopExists = false;
+    private bool minerExists = false;
+
     private int currentChunkY = 0;
     private Dictionary<int, GameObject> spawnedChunks = new Dictionary<int, GameObject>();
 
@@ -62,6 +65,15 @@ public class MapGenerator : MonoBehaviour
     public void ForceNextChunkSpecial()
     {
         forceSpecialNextChunk = true;
+    }
+    public void MinerDestroyed()
+    {
+        minerExists = false;
+    }
+
+    public void ShopDestroyed()
+    {
+        shopExists = false;
     }
 
     void GenerateChunk(int chunkY)
@@ -123,23 +135,50 @@ public class MapGenerator : MonoBehaviour
                 startY - (specialPosition.y * blockSize)
             );
 
-            GameObject prefabToSpawn;
+            GameObject prefabToSpawn = null;
 
-            if (Random.value < 0.5f)
+            if (!shopExists && !minerExists)
             {
+                // Ambos disponibles
+                prefabToSpawn = Random.value < 0.5f ? shopPrefab : minerPrefab;
+            }
+            else if (!shopExists)
+            {
+                // Solo tienda disponible
                 prefabToSpawn = shopPrefab;
             }
-            else
+            else if (!minerExists)
             {
+                // Solo minero disponible
                 prefabToSpawn = minerPrefab;
             }
 
-            GameObject spawnedObject = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity, chunkParent.transform);
-            MinerManager minerScript = spawnedObject.GetComponent<MinerManager>();
-
-            if (minerScript != null)
+            // Si ambos existen, no spawnea nada
+            if (prefabToSpawn != null)
             {
-                minerScript.MinerButton = minerPanel;
+                GameObject spawnedObject = Instantiate(
+                    prefabToSpawn,
+                    spawnPos,
+                    Quaternion.identity,
+                    chunkParent.transform
+                );
+
+                // Registrar existencia
+                if (prefabToSpawn == shopPrefab)
+                {
+                    shopExists = true;
+                }
+                else if (prefabToSpawn == minerPrefab)
+                {
+                    minerExists = true;
+
+                    MinerManager minerScript = spawnedObject.GetComponent<MinerManager>();
+
+                    if (minerScript != null)
+                    {
+                        minerScript.MinerButton = minerPanel;
+                    }
+                }
             }
 
         }
