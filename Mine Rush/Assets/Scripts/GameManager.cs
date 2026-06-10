@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour
     public GameObject startButton;
     public Animator animator;
 
-
+    private void Awake()
+    {
+        Camera.main.orthographicSize = 800;
+    }
     private void Start()
     {
         //isInAMenu = false;

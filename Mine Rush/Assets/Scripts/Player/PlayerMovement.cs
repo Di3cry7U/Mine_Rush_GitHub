@@ -80,6 +80,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Time.time < nextTimeToDamage) return;
 
+        Handheld.Vibrate();
+
         nextTimeToDamage = Time.time + cooldown;
 
         Debug.DrawRay(transform.position, lastDirection * range, Color.red, 0.5f);

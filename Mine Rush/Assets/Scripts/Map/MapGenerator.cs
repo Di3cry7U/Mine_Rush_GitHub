@@ -42,6 +42,7 @@ public class MapGenerator : MonoBehaviour
     private Dictionary<int, GameObject> spawnedChunks = new Dictionary<int, GameObject>();
 
 
+    
     void Start()
     {
         for (int i = 0; i < 3; i++)
