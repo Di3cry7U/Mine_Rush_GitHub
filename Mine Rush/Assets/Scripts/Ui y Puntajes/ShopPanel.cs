@@ -21,10 +21,12 @@ public class ShopPanel : MonoBehaviour
     private void Start()
     {
         costoTxtPowUpTaladro.text = ": " + costPowUpTal;
+        costoTxtPowUpDin.text = ": " + costPowUpDin;
     }
     private void Update()
     {
         costoTxtPowUpTaladro.text = ": " + costPowUpTal;
+            costoTxtPowUpDin.text = ": " + costPowUpDin;
     }
 
     public void CloseMinerMenu()
@@ -43,15 +45,18 @@ public class ShopPanel : MonoBehaviour
         if (mineralsManager.mineralsCount >= costPowUpTal)
         {
             print("Compraste Power-Up De Taladro");
+
+            costoTxtPowUpTaladro.text = ": " + costPowUpTal;
         }
     }   
     public void ComprarPowUpDin()
     {
         if (mineralsManager.mineralsCount >= costPowUpDin)
         {
-            dinamitePlayerStock++;
+            dinamitePlayerStock+=1;
             mineralsManager.mineralsCount = mineralsManager.mineralsCount - costPowUpDin;
-            costPowUpDin *= 1.2f;
+            costPowUpDin *= 1.5f;
+
         }
     }
 }

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,7 @@ public class DinamiteScript : MonoBehaviour
     public LayerMask layerMask;
     public ShopPanel shopPanel;
     public GameObject dinamiteButton;
+    public TextMeshProUGUI testTxt;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,6 +18,7 @@ public class DinamiteScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        testTxt.text = shopPanel.dinamitePlayerStock.ToString();
         if(shopPanel.dinamitePlayerStock > 0)
         {
             dinamiteButton.SetActive(true);
@@ -37,8 +40,10 @@ public class DinamiteScript : MonoBehaviour
 
         foreach (var hitcollider in hitcolliders)
         {
-
-            hitcollider.GetComponent<BlockScript>().DropMinerals();
+            if (hitcollider.GetComponent<BlockScript>() != null)
+            {
+                hitcollider.GetComponent<BlockScript>().DropMinerals();
+            }
             Destroy(hitcollider.gameObject);
 
 
