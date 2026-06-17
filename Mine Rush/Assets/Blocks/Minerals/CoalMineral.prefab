@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9718656545dc8f145a33a99777a20c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MineralScript
+  uiManager: {fileID: 0}
   value: 1
 --- !u!212 &6843609977961287011
 SpriteRenderer:

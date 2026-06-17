@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Time.time < nextTimeToDamage) return;
 
-        Handheld.Vibrate();
+        //Handheld.Vibrate(); Activar para tener vibracion cada vez que se pique el boton
 
         nextTimeToDamage = Time.time + cooldown;
 
@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
             if (!hit.collider.CompareTag("Player"))
             {
                 BlockScript block = hit.collider.GetComponent<BlockScript>();
-
+                Handheld.Vibrate();
                 if (block != null)
                 {
                     block.TakeDamage(dmg);

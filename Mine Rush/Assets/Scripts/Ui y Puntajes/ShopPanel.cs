@@ -10,6 +10,7 @@ public class ShopPanel : MonoBehaviour
     public float costPowUpTal = 20;
     public TextMeshProUGUI costoTxtPowUpDin;
     public float costPowUpDin = 20;
+    public float dinamitePlayerStock;
     public UiManager mineralsManager;
     public PlayerMovement playerStats;
 
@@ -48,7 +49,9 @@ public class ShopPanel : MonoBehaviour
     {
         if (mineralsManager.mineralsCount >= costPowUpDin)
         {
-
+            dinamitePlayerStock++;
+            mineralsManager.mineralsCount = mineralsManager.mineralsCount - costPowUpDin;
+            costPowUpDin *= 1.2f;
         }
     }
 }

@@ -30,7 +30,7 @@ public class BlockScript : MonoBehaviour
         health -= _damage;
     }
 
-    private void DropMinerals()
+    public void DropMinerals()
     {
         if(gameObject.tag == "Coal")
         {
