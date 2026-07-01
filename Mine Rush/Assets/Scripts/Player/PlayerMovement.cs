@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public float cooldown = .4f;
     public float range = 1.2f;
     public LayerMask blockLayer;
+    public AudioClip clipRomper;
 
     public UiManager uiManager;
     public GameManager gameManager;
@@ -85,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
         nextTimeToDamage = Time.time + cooldown;
 
         Debug.DrawRay(transform.position, lastDirection * range, Color.red, 0.5f);
+        MusicSFX_Singleton.Instance.SFX(clipRomper);
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(
             transform.position,
@@ -98,7 +100,11 @@ public class PlayerMovement : MonoBehaviour
             if (!hit.collider.CompareTag("Player"))
             {
                 BlockScript block = hit.collider.GetComponent<BlockScript>();
-                Handheld.Vibrate();
+                //Handheld.Vibrate();
+                if(block.gameObject.tag == "Indes")
+                {
+                    MusicSFX_Singleton.Instance.SFX(block.indesSFX);
+                }
                 if (block != null)
                 {
                     block.TakeDamage(dmg);

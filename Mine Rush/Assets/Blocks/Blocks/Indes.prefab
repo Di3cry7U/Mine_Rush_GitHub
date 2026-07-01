@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 64670436616098559}
   - component: {fileID: 820241985468536909}
   - component: {fileID: 5909941273965319259}
+  - component: {fileID: -2098712848119166544}
   m_Layer: 3
   m_Name: Indes
-  m_TagString: Untagged
+  m_TagString: Indes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,6 +140,29 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &-2098712848119166544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227203597123137186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e47de4b2b6928b249a89b1dec033e59a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlockScript
+  health: 0
+  maxHealth: 0
+  txt: {fileID: 0}
+  coalMinerals: {fileID: 0}
+  goldMinerals: {fileID: 0}
+  redstoneMinerals: {fileID: 0}
+  stoneSFX: {fileID: 0}
+  coalSFX: {fileID: 0}
+  goldSFX: {fileID: 0}
+  redstoneSFX: {fileID: 0}
+  indesSFX: {fileID: 8300000, guid: 62c6ccfa77bded2489cdaa3e6579f266, type: 3}
 --- !u!1 &5539657654152219613
 GameObject:
   m_ObjectHideFlags: 0

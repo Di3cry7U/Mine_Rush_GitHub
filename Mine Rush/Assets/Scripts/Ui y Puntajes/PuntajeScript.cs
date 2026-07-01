@@ -10,7 +10,7 @@ public class PuntajeScript : MonoBehaviour
     public GameObject shopPrefab;
     public GameObject minerPrefab;
 
-    public int nextSpecialScore = 25;
+    public int nextSpecialScore ;
 
     private MapGenerator mapGenerator;
 
@@ -45,7 +45,7 @@ public class PuntajeScript : MonoBehaviour
         {
             mapGenerator.ForceNextChunkSpecial();
 
-            nextSpecialScore += 50;
+            nextSpecialScore += 25;
         }
     }
 

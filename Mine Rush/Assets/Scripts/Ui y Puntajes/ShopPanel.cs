@@ -11,6 +11,7 @@ public class ShopPanel : MonoBehaviour
     public TextMeshProUGUI costoTxtPowUpDin;
     public float costPowUpDin = 20;
     public float dinamitePlayerStock;
+    public float taladroPlayerStock;
     public UiManager mineralsManager;
     public PlayerMovement playerStats;
 
@@ -44,8 +45,9 @@ public class ShopPanel : MonoBehaviour
     {
         if (mineralsManager.mineralsCount >= costPowUpTal)
         {
-            print("Compraste Power-Up De Taladro");
-
+            taladroPlayerStock += 1;
+            mineralsManager.mineralsCount = mineralsManager.mineralsCount - costPowUpTal;
+            costPowUpTal *= 1.5f;
             costoTxtPowUpTaladro.text = ": " + costPowUpTal;
         }
     }   

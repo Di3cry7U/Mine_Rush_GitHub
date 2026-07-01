@@ -52,6 +52,11 @@ MonoBehaviour:
   coalMinerals: {fileID: 0}
   goldMinerals: {fileID: 0}
   redstoneMinerals: {fileID: 0}
+  stoneSFX: {fileID: 0}
+  coalSFX: {fileID: 0}
+  goldSFX: {fileID: 8300000, guid: 15711526677ccbf4c8bbefeced8f2770, type: 3}
+  redstoneSFX: {fileID: 0}
+  indesSFX: {fileID: 0}
 --- !u!212 &820241985468536909
 SpriteRenderer:
   serializedVersion: 2

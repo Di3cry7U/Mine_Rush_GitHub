@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Camera.main.orthographicSize = 800;
+        //Screen.SetResolution(800, 1340, FullScreenMode.Windowed);
     }
     private void Start()
     {
