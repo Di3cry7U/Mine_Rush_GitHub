@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
             if (!hit.collider.CompareTag("Player"))
             {
                 BlockScript block = hit.collider.GetComponent<BlockScript>();
-                //Handheld.Vibrate();
+                Handheld.Vibrate();
                 if(block.gameObject.tag == "Indes")
                 {
                     MusicSFX_Singleton.Instance.SFX(block.indesSFX);
