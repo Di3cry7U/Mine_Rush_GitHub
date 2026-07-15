@@ -15,6 +15,12 @@ public class ShopPanel : MonoBehaviour
     public UiManager mineralsManager;
     public PlayerMovement playerStats;
 
+    [Header("Add Settings")]
+    public GameObject addButton;
+    public float countAdd = 5f;
+    public GameObject addAsset;
+    public bool isInAdd = false;
+
     private void OnEnable()
     {
         manager.isInAMenu = true;
@@ -28,6 +34,19 @@ public class ShopPanel : MonoBehaviour
     {
         costoTxtPowUpTaladro.text = ": " + costPowUpTal;
             costoTxtPowUpDin.text = ": " + costPowUpDin;
+
+        if (isInAdd)
+        {
+            addAsset.SetActive(true);
+            countAdd -= 0.01f;
+        }
+        if (countAdd <= 0)
+        {
+            addAsset.SetActive(false);
+            isInAdd = false;
+            mineralsManager.mineralsCount += 20;
+            countAdd = 5f;
+        }
     }
 
     public void CloseMinerMenu()
@@ -60,6 +79,12 @@ public class ShopPanel : MonoBehaviour
             costPowUpDin *= 1.5f;
 
         }
+    }
+
+    public void AddButton()
+    {
+        isInAdd = true;
+        addButton.SetActive(false);
     }
 }
 

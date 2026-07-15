@@ -34,6 +34,8 @@ public class MapGenerator : MonoBehaviour
     public GameObject shopPrefab;
     public GameObject minerPrefab; 
     public GameObject minerPanel;
+    public PuntajeScript puntajeScript;
+    public CameraMovement cameraMovement;
 
     private bool shopExists = false;
     private bool minerExists = false;
@@ -56,6 +58,34 @@ public class MapGenerator : MonoBehaviour
     {
         int playerChunkY = Mathf.FloorToInt(player.position.y / -(chunkHeight * blockSize));
 
+        if(puntajeScript.Score > 50)
+        {
+            blocks[0].probability = 70;
+            blocks[1].probability = 15;
+            blocks[2].probability = 7.5f;
+            blocks[3].probability = 0;
+            blocks[4].probability = 7.5f;
+            cameraMovement.speed = -0.9f;
+
+        }
+        if (puntajeScript.Score > 100)
+        {
+            blocks[0].probability = 55;
+            blocks[1].probability = 20;
+            blocks[2].probability = 10;
+            blocks[3].probability = 5;
+            blocks[4].probability = 10;
+            cameraMovement.speed = -1.1f;
+        }
+        if (puntajeScript.Score > 150)
+        {
+            blocks[0].probability = 40;
+            blocks[1].probability = 20;
+            blocks[2].probability = 15;
+            blocks[3].probability = 10;
+            blocks[4].probability = 15;
+            cameraMovement.speed = -1.4f;
+        }
 
         if (playerChunkY >= lowestChunkGenerated - chunksAhead)
         {

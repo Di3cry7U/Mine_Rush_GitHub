@@ -16,12 +16,12 @@ PlayerSettings:
   productName: Mine Rush
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 1, g: 0.118237376, b: 0, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.4716981, g: 0.23118465, b: 0.16687433, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 2
-  m_SplashScreenLogoStyle: 0
+  m_SplashScreenLogoStyle: 1
   m_SplashScreenDrawMode: 1
   m_SplashScreenBackgroundAnimationZoom: 0.557
   m_SplashScreenLogoAnimationZoom: 1
@@ -42,7 +42,7 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000f000000000000000, type: 0}
     duration: 3.42
-  - logo: {fileID: 3840669754812678891, guid: 834e246d5226ff144a5d9cd79ee5fe58, type: 3}
+  - logo: {fileID: -6458980464103599315, guid: ca03adb1420ff9843a146d14da1aab57, type: 3}
     duration: 2.75
   m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 0fdefdc8b36bb0f45a14fb837a239286, type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
@@ -118,7 +118,6 @@ PlayerSettings:
   xboxEnableGuest: 0
   xboxEnablePIXSampling: 0
   metalFramebufferOnly: 0
-  metalUseMetalDisplayLink: 0
   xboxOneResolution: 0
   xboxOneSResolution: 0
   xboxOneXResolution: 3
@@ -305,7 +304,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 70d027a6e852749498bc0e9b568fb62c, type: 3}
+      m_Icon: {fileID: 2800000, guid: 2bbbc3a8c6df34c4dadf9ed9b89a84ca, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public GameObject uiGameplay;
     public GameObject startButton;
     public Animator animator;
+    public GameObject insButton;
+    public GameObject insPanel;
 
     private void Awake()
     {
@@ -26,8 +28,22 @@ public class GameManager : MonoBehaviour
     {
         isInAMenu = false;
         startButton.SetActive(false);
+        insButton.SetActive(false);
         animator.SetBool("IsInStart", false);
 
+
+
+    }
+
+    public void InstruccionesButton()
+    {
+        insPanel.SetActive(true);
+
+    }
+
+    public void ExitIns()
+    {
+        insPanel.SetActive(false);
     }
     private void Update()
     {

@@ -20,6 +20,15 @@ public class MusicSFX_Singleton : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        sourceMusic.Play();
+    }
+
+    public void StartMusic()
+    {
+        sourceMusic.Play();
+    }
 
     public void SFX(AudioClip _clip)
     {

@@ -36,18 +36,7 @@ public class UiManager : MonoBehaviour
     {
         mineralsTxt.text = "Minerales: " + mineralsCount;
         print("Anuncio Restante: " + countAdd);
-        if (isInAdd)
-        {
-            addAsset.SetActive(true);
-            countAdd -= 0.01f;
-        }
-        if (countAdd <= 0)
-        {
-            addAsset.SetActive(false);
-            isInAdd =false;
-            mineralsCount += 20;
-            countAdd = 5f;
-        }
+
     }
 
     public void AddMineralsToTxt(float _addValue)
@@ -79,14 +68,11 @@ public class UiManager : MonoBehaviour
         pauseButton.SetActive(true);
         manager.isInAMenu = false;
     }
-    public void AddButton()
-    {
-        isInAdd = true;
-        addButton.SetActive(false);
-    }
+
 
     public void DefeatMenu()
     {
         SceneManager.LoadScene("GameScene");
+        MusicSFX_Singleton.Instance.StartMusic();
     }
 }
